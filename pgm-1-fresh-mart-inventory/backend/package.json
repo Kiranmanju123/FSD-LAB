@@ -1,0 +1,15 @@
+{
+  "name": "fresh-mart-inventory",
+  "version": "1.0.0",
+  "description": "FSD Lab Program 1 - Online Grocery Store Inventory Management (Fresh Mart Supermarket)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^4.22.3",
+    "mongoose": "^8.24.5"
+  }
+}

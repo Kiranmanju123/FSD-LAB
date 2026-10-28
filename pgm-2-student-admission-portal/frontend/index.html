@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Admission Portal</title>
+
+  <!-- Simple CSS. Kept small on purpose so the page is easy to read. -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f3f8;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+    }
+    h1 {
+      background: #1a3d7c;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      margin-top: 0;
+    }
+    /* White boxes for the forms and the table */
+    .card {
+      background: white;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #1a3d7c;
+      font-size: 20px;
+    }
+    /* Each form row: label on the left, input on the right */
+    .form-row {
+      margin-bottom: 10px;
+    }
+    .form-row label {
+      display: inline-block;
+      width: 160px;
+      font-weight: bold;
+    }
+    input {
+      padding: 8px;
+      font-size: 15px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      width: 300px;
+      max-width: 100%;
+    }
+    button {
+      padding: 8px 14px;
+      font-size: 15px;
+      border: none;
+      border-radius: 4px;
+      background: #1a3d7c;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0f2756;
+    }
+    button.delete {
+      background: #c62828;
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background: #e3eaf6;
+    }
+    /* Message boxes: green = success, red = error */
+    .message {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .success {
+      background: #e8f5e9;
+      color: #1b5e20;
+      border: 1px solid #a5d6a7;
+    }
+    .error {
+      background: #ffebee;
+      color: #b71c1c;
+      border: 1px solid #ef9a9a;
+    }
+    .valid {
+      color: #1b5e20;
+      font-weight: bold;
+    }
+    .invalid {
+      color: #b71c1c;
+      font-weight: bold;
+    }
+    .hint {
+      color: #555;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <h1>🎓 University Online Admission Portal</h1>
+
+    <!-- ============ Task 1: Read admission details ============ -->
+    <div class="card">
+      <h2>New Admission</h2>
+
+      <div class="form-row">
+        <label for="studentName">Student Name</label>
+        <input type="text" id="studentName" placeholder="e.g. Ravi Kumar">
+      </div>
+      <div class="form-row">
+        <label for="registrationNumber">Registration No.</label>
+        <input type="text" id="registrationNumber" placeholder="e.g. 12321 (palindrome = valid)">
+      </div>
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input type="text" id="email" placeholder="e.g. ravi@gmail.com">
+      </div>
+      <div class="form-row">
+        <label for="department">Department</label>
+        <input type="text" id="department" placeholder="e.g. Computer Science and Engineering">
+      </div>
+
+      <button onclick="registerStudent()">Register</button>
+
+      <!-- Shows the result: name length, department code, palindrome check -->
+      <div id="formMessage"></div>
+    </div>
+
+    <!-- ============ Task 4: Replace department names ============ -->
+    <div class="card">
+      <h2>Replace Department Name</h2>
+      <p class="hint">Changes the text in the department name of <b>all</b> records. Example: <b>Engg</b> → <b>Engineering</b></p>
+
+      <div class="form-row">
+        <label for="oldName">Old Text</label>
+        <input type="text" id="oldName" placeholder="e.g. Engg">
+      </div>
+      <div class="form-row">
+        <label for="newName">New Text</label>
+        <input type="text" id="newName" placeholder="e.g. Engineering">
+      </div>
+
+      <button onclick="replaceDepartment()">Replace</button>
+
+      <div id="replaceMessage"></div>
+    </div>
+
+    <!-- ============ All admission records ============ -->
+    <div class="card">
+      <h2>All Admissions (<span id="admissionCount">0</span>)</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Reg. No.</th>
+            <th>Reg. No. Valid?<br>(Palindrome)</th>
+            <th>Student Name</th>
+            <th>Name Length</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Dept. Code</th>
+            <th>Registered On</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <!-- The rows are added by script.js (loadAdmissions function) -->
+        <tbody id="admissionRows"></tbody>
+      </table>
+
+      <div id="listMessage"></div>
+    </div>
+
+  </div>
+
+  <!-- Our JavaScript. Kept at the END of body, so all the HTML above exists before the script runs. -->
+  <script src="script.js"></script>
+</body>
+</html>

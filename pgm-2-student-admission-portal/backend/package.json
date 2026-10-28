@@ -1,0 +1,15 @@
+{
+  "name": "student-admission-portal",
+  "version": "1.0.0",
+  "description": "FSD Lab - Student Admission Portal (string length, department code, replace, palindrome check)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^4.22.3",
+    "mongoose": "^8.24.5"
+  }
+}

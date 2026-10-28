@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fresh Mart - Inventory Management</title>
+
+  <!-- Simple CSS. Kept small on purpose so the page is easy to read. -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f5f2;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+    h1 {
+      background: #2e7d32;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      margin-top: 0;
+    }
+    /* Each lab task is one white "card" */
+    .task {
+      background: white;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+    .task h2 {
+      margin-top: 0;
+      color: #2e7d32;
+      font-size: 20px;
+    }
+    input {
+      padding: 8px;
+      font-size: 15px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+    }
+    button {
+      padding: 8px 14px;
+      font-size: 15px;
+      border: none;
+      border-radius: 4px;
+      background: #2e7d32;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1b5e20;
+    }
+    button.remove {
+      background: #c62828;
+    }
+    button.remove:hover {
+      background: #8e0000;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background: #e8f5e9;
+    }
+    .qty-input {
+      width: 70px;
+    }
+    .total-row {
+      font-weight: bold;
+      background: #fff9c4;
+    }
+    /* Message boxes: green = success, red = error */
+    .message {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .success {
+      background: #e8f5e9;
+      color: #1b5e20;
+      border: 1px solid #a5d6a7;
+    }
+    .error {
+      background: #ffebee;
+      color: #b71c1c;
+      border: 1px solid #ef9a9a;
+    }
+    /* The category found by search gets this yellow background */
+    .highlight {
+      background: #fff176;
+      font-weight: bold;
+    }
+    code {
+      background: #eee;
+      padding: 4px 6px;
+      border-radius: 4px;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <h1>🛒 Fresh Mart Supermarket<br>Inventory Management</h1>
+
+    <!-- ============ TASK 1: Welcome message ============ -->
+    <div class="task">
+      <h2>Task 1: Welcome Message</h2>
+      <input type="text" id="customerName" placeholder="Enter your name">
+      <button onclick="showWelcome()">Show Welcome</button>
+      <div id="welcomeMessage"></div>
+    </div>
+
+    <!-- ============ TASK 2: Calculate total ============ -->
+    <div class="task">
+      <h2>Task 2: Calculate Total Purchase Amount</h2>
+      <p>Enter how many of each product you want, then click <b>Calculate Total</b>.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Category</th>
+            <th>Price (₹)</th>
+            <th>In Stock</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <!-- The rows are added by script.js (loadProducts function) -->
+        <tbody id="productRows"></tbody>
+      </table>
+
+      <button onclick="calculateTotal()">Calculate Total</button>
+      <div id="purchaseMessage"></div>
+      <!-- The bill is shown here by script.js -->
+      <div id="billArea"></div>
+    </div>
+
+    <!-- ============ TASK 3: Show categories (array) ============ -->
+    <div class="task">
+      <h2>Task 3: Product Categories (Array)</h2>
+      <p>Total categories: <b id="categoryCount">0</b></p>
+      <!-- <ol> = ordered list. The browser numbers it 1, 2, 3 ... (the POSITION) -->
+      <ol id="categoryList"></ol>
+      <p>The same data as a JavaScript array:</p>
+      <code id="categoryArray">[]</code>
+    </div>
+
+    <!-- ============ TASK 4: Add / Remove category ============ -->
+    <div class="task">
+      <h2>Task 4: Add or Remove a Category</h2>
+      <input type="text" id="categoryInput" placeholder="e.g. Personal Care">
+      <button onclick="addCategory()">Add</button>
+      <button class="remove" onclick="removeCategory()">Remove</button>
+      <div id="categoryMessage"></div>
+    </div>
+
+    <!-- ============ TASK 5: Search category ============ -->
+    <div class="task">
+      <h2>Task 5: Search a Category</h2>
+      <input type="text" id="searchInput" placeholder="e.g. Dairy">
+      <button onclick="searchCategory()">Search</button>
+      <div id="searchMessage"></div>
+    </div>
+
+  </div>
+
+  <!-- Our JavaScript. Kept at the END of body, so all the HTML above exists before the script runs. -->
+  <script src="script.js"></script>
+</body>
+</html>
